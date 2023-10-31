@@ -67,4 +67,11 @@ class kampus extends CI_Controller{
 		$this->m_data->hapus_data($where,'mahasiswa');
 		redirect('kampus');
 	}
+
+    function __construct() {
+        parent::__construct();
+        $this->load->model('m_data');
+        $this->load->helper('url');
+        $this->load->library('form_validation');
+    }
 }
