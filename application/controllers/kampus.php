@@ -74,4 +74,28 @@ class kampus extends CI_Controller{
         $this->load->helper('url');
         $this->load->library('form_validation');
     }
+
+    function tambah_aksi(){
+        $this->form_validation->set_rules('nim','NIM','required|min_length[8] |max_length[8]');
+        $this->form_validation->set_rules('nama','Nama','required|alpha|min_lenght[5]|max_length[15]');
+        $this->form_validation->set_rules('alamat','Alamat','required|alpha');
+        $this->form_validation->set_rules('pekerjaan','Pekerjaan','required|alpha');
+
+        if($this->form_validation->run() == TRUE)
+        {
+            $nim = $this->input->post('nim');
+            $nama = $this->input->post('nama');
+            $alamat = $this->input->post('alamat');
+            $pekerjaan = $this->input->post('pekerjaan');
+
+            $config['max-size']=2048;
+            $config['allowed_types']="png|jpg|gif";
+            $config['remove_spaces']=TRUE;
+            $config['overwrite']=TRUE;
+            $config['upload_path']=FCPATH. 'images';
+
+            $this->load->library('upload');
+            $this->upload->initialize
+        }
+    }
 }
